@@ -1,5 +1,5 @@
 .navbar-brand{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size: xx-large;
 }
 .navbar{
@@ -14,14 +14,77 @@
 
 
 
-
-
-
 }
+
+.card:hover{
+    transition-duration: .2s;
+    background: rgba(39, 42, 43, 0.089);
+    
+}
+
+
+
+
+
+
 .card.active{
     box-shadow: 12px 12px 22px grey;
     transform: scale(1.12);
     transition-duration: .75s;
+
+
+}
+
+
+
+
+
+
+#continue.active{
+    
+    transition-duration: .3s;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+     right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.582)
+    
+    
+
+    
+
+}
+h1 {
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: xx-large;
+    text-align: center;
+    font-size: 7em;
+    height: 75%;
+    width: 100%;
+    justify-content:center;
+    display:flex;
+    align-items:center;
+    
+
+}
+
+
+
+
+
+#No{
+    font-family: 'Orbitron', sans-serif;
+    
+    text-align: center;
+
+    justify-content:center;
+    display:flex;
+    align-items:center;
 
 
 }

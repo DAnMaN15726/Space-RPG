@@ -5,7 +5,11 @@ var toggleChoice1 = false;
 var toggleChoice2 = false;
 var toggleChoice3 = false;
 var toggleChoice4 = false;
-    
+
+
+
+
+
 
 $("#Card1").click(function(){
     // toggleChoice =! toggleChoice;
@@ -25,6 +29,18 @@ $("#Card1").click(function(){
 
 
 
+
+
+
+
+    if (counter === 2){
+        console.log("Continue?");
+        console.log(counter);
+        continueA();
+    }
+
+
+
 });
 
 $("#Card2").click(function(){
@@ -40,6 +56,18 @@ $("#Card2").click(function(){
     (toggleChoice2 === false){
         counter = counter - 1;
         console.log(counter);
+    }
+
+
+
+
+
+
+
+    if (counter === 2){
+        console.log("Continue?");
+        console.log(counter);
+        continueA();
     }
 
 
@@ -64,6 +92,18 @@ $("#Card3").click(function(){
 
 
 
+
+
+
+
+    if (counter === 2){
+        console.log("Continue?");
+        console.log(counter);
+        continueA();
+    }
+
+
+
 });
 
 $("#Card4").click(function(){
@@ -84,7 +124,78 @@ $("#Card4").click(function(){
 
 
 
+
+
+
+
+    if (counter === 2){
+        console.log("Continue?");
+        console.log(counter);
+        continueA();
+    }
+
+
+
 });
 
 
 
+
+function continueA(){
+    $("#continue").toggleClass("active");
+    $("#continue").append("<h1>Continue?</h1>");
+
+
+    $("#continue").append("<input type = 'button' value = 'Yes' id = 'Yes' />");
+    $("#continue").append("<input type = 'button' value = 'No' id = 'No' />");
+    $("#No").click(function(){
+        $("#continue").toggleClass("active");
+        $("#continue").empty();
+        reset();
+        
+        
+
+      });
+
+
+    
+}
+
+
+function reset(){
+    counter = 0;
+
+    
+
+
+    if( toggleChoice1 === true){
+        $("#Card1").toggleClass("active", toggleChoice1 =! toggleChoice1);
+        
+
+    }
+    if(toggleChoice2 === true){
+        $("#Card2").toggleClass("active", toggleChoice2 =! toggleChoice2);
+        
+        
+    }
+
+
+    if( toggleChoice3 === true){
+        $("#Card3").toggleClass("active", toggleChoice3 =! toggleChoice3);
+        
+
+    }
+    if(toggleChoice4 === true){
+        $("#Card4").toggleClass("active", toggleChoice4 =! toggleChoice4);
+        
+        
+    }
+
+
+    
+
+
+
+
+
+}
