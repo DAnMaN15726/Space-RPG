@@ -3,5 +3,25 @@
     font-size: xx-large;
 }
 .navbar{
-    
+
+}
+
+.card:active, .card:target{
+
+    box-shadow: 12px 12px 22px grey;
+    transform: scale(1.12);
+    transition-duration: .75s;
+
+
+
+
+
+
+}
+.card.active{
+    box-shadow: 12px 12px 22px grey;
+    transform: scale(1.12);
+    transition-duration: .75s;
+
+
 }
