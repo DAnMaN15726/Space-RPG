@@ -1,10 +1,17 @@
 let counter = 0;
-let boolean = false;
-// var toggleChoice = false;
+
 var toggleChoice1 = false;
 var toggleChoice2 = false;
 var toggleChoice3 = false;
 var toggleChoice4 = false;
+
+const audioElement = document.createElement("audio");
+audioElement.setAttribute("src", "./assets/audio/misc_menu_4.wav");
+
+const audioE2 = document.createElement("audio");
+audioE2.setAttribute("src", "./assets/audio/misc_sound.wav")
+
+
 
 
 
@@ -12,11 +19,12 @@ var toggleChoice4 = false;
 
 
 $("#Card1").click(function(){
-    // toggleChoice =! toggleChoice;
     
     
+    audioElement.play();
+    audioElement.currentTime=0
     $(this).toggleClass("active", toggleChoice1 =! toggleChoice1); 
-    // console.log(this.id);
+    
     if( toggleChoice1 === true){
         counter = counter + 1;
         console.log(counter);
@@ -44,10 +52,11 @@ $("#Card1").click(function(){
 });
 
 $("#Card2").click(function(){
-    // toggleChoice =! toggleChoice;
     
+    audioElement.play();
+    audioElement.currentTime=0
     $(this).toggleClass("active", toggleChoice2 =! toggleChoice2); 
-    // console.log(this.id);
+    
     if( toggleChoice2 === true){
         counter = counter + 1;
         console.log(counter);
@@ -75,11 +84,11 @@ $("#Card2").click(function(){
 });
 
 $("#Card3").click(function(){
-    // toggleChoice =! toggleChoice;
     
-    
+    audioElement.play();
+    audioElement.currentTime=0
     $(this).toggleClass("active", toggleChoice3 =! toggleChoice3); 
-    // console.log(this.id);
+    
     if( toggleChoice3 === true){
         counter = counter + 1;
         console.log(counter);
@@ -107,11 +116,11 @@ $("#Card3").click(function(){
 });
 
 $("#Card4").click(function(){
-    // toggleChoice =! toggleChoice;
-   
     
+    audioElement.play();
+    audioElement.currentTime=0
     $(this).toggleClass("active", toggleChoice4 =! toggleChoice4); 
-    // console.log(this.id);
+    
     if( toggleChoice4 === true){
         counter = counter + 1;
         console.log(counter);
@@ -149,6 +158,8 @@ function continueA(){
     $("#continue").append("<input type = 'button' value = 'Yes' id = 'Yes' />");
     $("#continue").append("<input type = 'button' value = 'No' id = 'No' />");
     $("#No").click(function(){
+        audioE2.play();
+        audioE2.currentTime = 0;
         $("#continue").toggleClass("active");
         $("#continue").empty();
         reset();
@@ -165,14 +176,14 @@ function continueA(){
 function reset(){
     counter = 0;
 
-    
-
 
     if( toggleChoice1 === true){
         $("#Card1").toggleClass("active", toggleChoice1 =! toggleChoice1);
         
 
     }
+
+
     if(toggleChoice2 === true){
         $("#Card2").toggleClass("active", toggleChoice2 =! toggleChoice2);
         
@@ -185,17 +196,13 @@ function reset(){
         
 
     }
+
+
     if(toggleChoice4 === true){
         $("#Card4").toggleClass("active", toggleChoice4 =! toggleChoice4);
         
         
     }
-
-
-    
-
-
-
-
-
 }
+
+continueA();
