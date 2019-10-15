@@ -1,15 +1,19 @@
 let counter = 0;
-
+let array = [];
 var toggleChoice1 = false;
 var toggleChoice2 = false;
 var toggleChoice3 = false;
 var toggleChoice4 = false;
+
+let player = 0;
+let enemy = 0;
 
 
 let isaacC = 100;
 let Shodan = 200;
 let hellKnight = 150;
 let dooM = 175;
+const damageO = {Stomp: 15, Shoot: 20, Impale: 15, ContactBeam: 45}
 
 
 
@@ -40,11 +44,13 @@ $("#Card1").click(function(){
     if( toggleChoice1 === true){
         counter = counter + 1;
         console.log(counter);
+        array.push("#Card1");
     }
     else if
     (toggleChoice1 === false){
         counter = counter - 1;
         console.log(counter);
+        removeElement("#Card1");
     }
 
 
@@ -72,11 +78,13 @@ $("#Card2").click(function(){
     if( toggleChoice2 === true){
         counter = counter + 1;
         console.log(counter);
+        array.push("#Card2");
     }
     else if
     (toggleChoice2 === false){
         counter = counter - 1;
         console.log(counter);
+        removeElement("#Card2");
     }
 
 
@@ -104,11 +112,13 @@ $("#Card3").click(function(){
     if( toggleChoice3 === true){
         counter = counter + 1;
         console.log(counter);
+        array.push("#Card3");
     }
     else if
     (toggleChoice3 === false){
         counter = counter - 1;
         console.log(counter);
+        removeElement("#Card3");
     }
 
 
@@ -136,11 +146,13 @@ $("#Card4").click(function(){
     if( toggleChoice4 === true){
         counter = counter + 1;
         console.log(counter);
+        array.push("#Card4");
     }
     else if
     (toggleChoice4 === false){
         counter = counter - 1;
         console.log(counter);
+        removeElement("#Card4");
     }
 
 
@@ -175,6 +187,7 @@ function continueA(){
         $("#continue").toggleClass("active");
         $("#continue").empty();
         reset();
+        array.length = 0;
       });
     $("#Yes").click(function(){
         continueB();
@@ -188,6 +201,7 @@ function continueA(){
 
 function reset(){
     counter = 0;
+    
 
 
     if( toggleChoice1 === true){
@@ -204,11 +218,12 @@ function reset(){
     }
 
 
+
     if( toggleChoice3 === true){
         $("#Card3").toggleClass("active", toggleChoice3 =! toggleChoice3);
-        
-
+       
     }
+
 
 
     if(toggleChoice4 === true){
@@ -216,6 +231,10 @@ function reset(){
         
         
     }
+
+
+
+    console.log(array);
 }
 
 
@@ -253,15 +272,45 @@ function continueB(){
 
 
 function continueC(){
+    // damage();
+        $(array[0]).remove();
+
+        
+        // $(".container").append(buton);
+        //$("#buton").prop('value', array[1]);
+        
+        $.each(damageO, function(key,valueObj){
+            var buton = $("<button>"+ key + "</button>") 
+            buton.attr("id", "buton");
+            // $(".container").append(buton);
+            buton.appendTo(".container");
+            
+            
+            console.log(key);
+        });
+
+
+
+
+
+}
+
+
+
+
+
+
+
+function damage(){
     
-
-
-
-
+    // $(".card").addClass("notransition");
+    // $( ".card:active" ).prop( "disabled", true );
+    // $( ".card.active" ).prop( "disabled", true );
+    
+    
 }
 
 
-function damage(identity, damage){
 
 
 
@@ -271,5 +320,16 @@ function damage(identity, damage){
 
 
 
+
+
+
+
+
+function removeElement(div){
+    array = jQuery.grep(array, function(value) {
+        return value != div;
+      });
+      console.log(array);
+      
+      return (array);
 }
-
