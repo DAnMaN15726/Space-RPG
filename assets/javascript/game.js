@@ -5,6 +5,18 @@ var toggleChoice2 = false;
 var toggleChoice3 = false;
 var toggleChoice4 = false;
 
+
+let isaacC = 100;
+let Shodan = 200;
+let hellKnight = 150;
+let dooM = 175;
+
+
+
+
+
+
+
 const audioElement = document.createElement("audio");
 audioElement.setAttribute("src", "./assets/audio/misc_menu_4.wav");
 
@@ -163,10 +175,11 @@ function continueA(){
         $("#continue").toggleClass("active");
         $("#continue").empty();
         reset();
-        
-        
-
       });
+    $("#Yes").click(function(){
+        continueB();
+        continueC();
+    });
 
 
     
@@ -205,4 +218,58 @@ function reset(){
     }
 }
 
-continueA();
+
+
+
+
+function continueB(){
+    if( toggleChoice1 === false){
+        $("#Card1").remove();
+        
+
+    }
+    if(toggleChoice2 === false){
+        $("#Card2").remove();
+        
+        
+    }
+    if( toggleChoice3 === false){
+        $("#Card3").remove();
+        
+
+    }
+    if(toggleChoice4 === false){
+        $("#Card4").remove();
+        
+        
+    }
+
+        
+    $("#continue").toggleClass("active");
+    $("#continue").empty();
+    reset();
+
+}
+
+
+function continueC(){
+    
+
+
+
+
+}
+
+
+function damage(identity, damage){
+
+
+
+
+
+
+
+
+
+}
+
