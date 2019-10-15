@@ -13,7 +13,10 @@ let isaacC = 100;
 let Shodan = 200;
 let hellKnight = 150;
 let dooM = 175;
-const damageO = {Stomp: 15, Shoot: 20, Impale: 15, ContactBeam: 45}
+const damageO = {Stomp: 15, Shoot: 20, Impale: 15, ContactBeam: 45};
+const damage1 = {ShockToTheSystem: 15, Holograph: 20, IonOrb: 15};
+const damage2 = {Earthquake: 15, RipTear: 20, Growl: 15, Bite: 45};
+const damage3 = {Punch: 10, DoubleBarrel: 20, RipandTear: 30, BFG9000: 70};
 
 
 
@@ -274,14 +277,17 @@ function continueB(){
 function continueC(){
     // damage();
         $(array[0]).remove();
-
+        let x = 0
         
         // $(".container").append(buton);
         //$("#buton").prop('value', array[1]);
         
         $.each(damageO, function(key,valueObj){
+            x++;
             var buton = $("<button>"+ key + "</button>") 
-            buton.attr("id", "buton");
+            
+            buton.attr("id", x);
+            buton.attr("class", "buton");
             // $(".container").append(buton);
             buton.appendTo(".container");
             
@@ -290,27 +296,49 @@ function continueC(){
         });
 
 
+        $("#1").click(function(){
+            console.log(this);
+            
+            sound( 1, array[0]);
+
+
+
+        });
+        
+        $("#2").click(function(){
+            console.log(this);
+            sound(this);
+
+
+
+
+
+        });
+
+        $("#3").click(function(){
+            console.log(this);
+            sound(this);
+
+
+
+
+
+        });
+
+        $("#4").click(function(){
+            console.log(this);
+            sound(this);
+
+
+
+
+
+        });
+        
 
 
 
 }
-
-
-
-
-
-
-
-function damage(){
-    
-    // $(".card").addClass("notransition");
-    // $( ".card:active" ).prop( "disabled", true );
-    // $( ".card.active" ).prop( "disabled", true );
-    
-    
-}
-
-
 
 
 
@@ -332,4 +360,28 @@ function removeElement(div){
       console.log(array);
       
       return (array);
+}
+
+
+
+
+
+
+
+
+
+
+
+function sound(x, arr){
+
+    
+
+
+
+
+
+
+
+
+
 }
