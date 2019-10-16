@@ -18,25 +18,102 @@ const damage1 = {ShockToTheSystem: 15, Holograph: 20, IonOrb: 15};
 const damage2 = {Earthquake: 15, RipTear: 20, Growl: 15, Bite: 45};
 const damage3 = {Punch: 10, DoubleBarrel: 20, RipandTear: 30, BFG9000: 70};
 
+
+
+
+const audioElement = document.createElement("audio");
+audioElement.setAttribute("src", "./assets/audio/misc_menu_4.wav");
+
+const audioE2 = document.createElement("audio");
+audioE2.setAttribute("src", "./assets/audio/misc_sound.wav")
+
+
+const growl = document.createElement("audio");
+growl.setAttribute("src", "./assets/audio/growl.mp3")
+
+
+const bfg9000 = document.createElement("audio");
+bfg9000.setAttribute("src", "./assets/audio/bfg9000.mp3")
+
+const bite = document.createElement("audio");
+bite.setAttribute("src", "./assets/audio/bite.mp3")
+
+
+
+
+
+const contactbeam = document.createElement("audio");
+contactbeam.setAttribute("src", "./assets/audio/contact beam.mp3");
+
+const doublebarrell = document.createElement("audio");
+doublebarrell.setAttribute("src", "./assets/audio/doublebarrell.mp3")
+
+
+const earthquake = document.createElement("audio");
+earthquake.setAttribute("src", "./assets/audio/earthquake.mp3")
+
+
+const shodan = document.createElement("audio");
+shodan.setAttribute("src", "./assets/audio/i am shodan.mp3")
+
+const impale = document.createElement("audio");
+impale.setAttribute("src", "./assets/audio/impale.mp3")
+
+
+
+const ionorb = document.createElement("audio");
+ionorb.setAttribute("src", "./assets/audio/ion orb.mp3")
+
+const punch = document.createElement("audio");
+punch.setAttribute("src", "./assets/audio/punch.mp3")
+
+
+
+const shodanlaughing = document.createElement("audio");
+shodanlaughing.setAttribute("src", "./assets/audio/shodan laughing.mp3")
+
+const shoot = document.createElement("audio");
+shoot.setAttribute("src", "./assets/audio/shoot.mp3")
+
+const slash = document.createElement("audio");
+slash.setAttribute("src", "./assets/audio/slash.mp3")
+
+const stomp = document.createElement("audio");
+stomp.setAttribute("src", "./assets/audio/stomp.mp3")
+
+const hologram = document.createElement("audio");
+hologram.setAttribute("src", "./assets/audio/hologram.mp3")
+
+const riptear = document.createElement("audio");
+riptear.setAttribute("src", "./assets/audio/RipTear.wav")
+
+
+
+
+
 const moveSet = [
     {
         name: "List1",
         moves: [
             {
                 name : 'Stomp',
-                power : 15
+                power : 15,
+                sound: stomp
             },
             {
                 name: 'Shoot',
-                power: 20
+                power: 20,
+                sound: shoot
             },
             {
                 name: 'Impale',
-                power: 25
+                power: 25,
+                sound: impale
             },
             {
                 name: 'ContactBeam',
-                power: 40
+                power: 40,
+                sound: contactbeam
             }
         ]
 
@@ -47,15 +124,18 @@ const moveSet = [
         moves: [
             {
                 name : 'ShockToTheSystem',
-                power : 15
+                power : 15,
+                sound: shodanlaughing
             },
             {
                 name: 'Holograph',
-                power: 10
+                power: 10,
+                sound: hologram
             },
             {
                 name: 'IonOrb',
-                power: 20
+                power: 20,
+                sound: ionorb
             }
             
         ]
@@ -66,19 +146,23 @@ const moveSet = [
     moves: [
             {
                 name: 'Earthquake',
-                power: 15
+                power: 15,
+                sound: earthquake
             },
             {
                 name: 'RipTear',
-                power: 25
+                power: 25,
+                sound: riptear
             },
             {
                 name: 'Growl',
-                power: 15
+                power: 15,
+                sound: growl
             },
             {
                 name: 'Bite',
-                power: 45
+                power: 45,
+                sound: bite
             }
         ]
 
@@ -88,19 +172,23 @@ const moveSet = [
     moves: [
             {
                 name: 'Punch',
-                power: 10
+                power: 10,
+                sound: punch
             },
             {
                 name: 'DoubleBarrel',
-                power: 20
+                power: 20,
+                sound: doublebarrell
             },
             {
                 name: 'RipandTear',
-                power: 30
+                power: 30,
+                sound: riptear
             },
             {
                 name: 'BFG900',
-                power: 70
+                power: 70,
+                sound: bfg9000
             }
         ]
 
@@ -111,12 +199,6 @@ const moveSet = [
 
 
 
-
-const audioElement = document.createElement("audio");
-audioElement.setAttribute("src", "./assets/audio/misc_menu_4.wav");
-
-const audioE2 = document.createElement("audio");
-audioE2.setAttribute("src", "./assets/audio/misc_sound.wav")
 
 
 
@@ -133,6 +215,8 @@ $("#Card1").click(function(){
     $(this).toggleClass("active", toggleChoice1 =! toggleChoice1); 
     
     if( toggleChoice1 === true){
+        audioElement.play();
+        audioElement.currentTime=0
         counter = counter + 1;
         console.log(counter);
         array.push("#Card1");
@@ -162,11 +246,12 @@ $("#Card1").click(function(){
 
 $("#Card2").click(function(){
     
-    audioElement.play();
-    audioElement.currentTime=0
+    
     $(this).toggleClass("active", toggleChoice2 =! toggleChoice2); 
     
     if( toggleChoice2 === true){
+        shodan.play();
+        shodan.currentTime=0
         counter = counter + 1;
         console.log(counter);
         array.push("#Card2");
@@ -196,11 +281,12 @@ $("#Card2").click(function(){
 
 $("#Card3").click(function(){
     
-    audioElement.play();
-    audioElement.currentTime=0
+    
     $(this).toggleClass("active", toggleChoice3 =! toggleChoice3); 
     
     if( toggleChoice3 === true){
+        growl.play();
+        growl.currentTime=0
         counter = counter + 1;
         console.log(counter);
         array.push("#Card3");
@@ -281,6 +367,13 @@ function continueA(){
         array.length = 0;
       });
     $("#Yes").click(function(){
+        audioE2.play();
+        audioE2.currentTime = 0;
+        player = 100;
+        isaacC = 100;
+        Shodan = 100;
+        hellKnight = 100;
+        dooM = 100;
         continueB();
         continueC();
     });
@@ -356,15 +449,15 @@ function continueB(){
 
         
     $("#continue").toggleClass("active");
-    $("#continue").hide();
+    $("#continue").empty();
     reset();
 
 }
 
 
 function continueC(){
-    
-        $(array[0]).remove();
+        
+        $(array[0]).hide();
         let x = number(array[0]);
         console.log(x);
         let y = 0;
@@ -387,7 +480,8 @@ function continueC(){
         $("#1").click(function(){
         
             let V = moveSet[x].moves[0].power;
-            
+            moveSet[x].moves[0].sound.play();
+            moveSet[x].moves[0].sound.currentTime = 0;
 
             damage(V, array[1]);
 
@@ -398,6 +492,8 @@ function continueC(){
         $("#2").click(function(){
             console.log(this);
             let V = moveSet[x].moves[1].power;
+            moveSet[x].moves[1].sound.play();
+            moveSet[x].moves[1].sound.currentTime = 0;
 
 
             damage(V, array[1]);
@@ -409,6 +505,8 @@ function continueC(){
         $("#3").click(function(){
             console.log(this);
             let V = moveSet[x].moves[2].power;
+            moveSet[x].moves[2].sound.play();
+            moveSet[x].moves[2].sound.currentTime = 0;
 
 
             damage(V, array[1]);
@@ -420,6 +518,8 @@ function continueC(){
         $("#4").click(function(){
             console.log(this);
             let V = moveSet[x].moves[3].power;
+            moveSet[x].moves[3].sound.play();
+            moveSet[x].moves[3].sound.currentTime = 0;
 
 
             damage(V, array[1]);
@@ -498,7 +598,8 @@ function damage(input, arr){
     if (arr === "#Card1"){
         
         isaacC = healthBar(isaacC, input);
-        
+        console.log(isaacC);
+        console.log(input);
 
     }
     if (arr === "#Card2"){
@@ -524,15 +625,16 @@ function damage(input, arr){
 
 function healthBar(Total, inP){
     
-    
-    
-
+    let X = Math.floor((Math.random() * 20) + 1);
     
 
-    if (Total < inP){
+    
+
+    if (Total <= inP || player <= X){
         $(".HealthCyan").animate({"width": "0%"}, 150);
         $(".HealthBrightCyan").animate({"width": "0%"}, 1000);
-        
+        $(".HealthCyan2").animate({"width": "0%"}, 150);
+        $(".HealthBrightCyan2").animate({"width": "0%"}, 1000);
         resetAll();
 
 
@@ -540,12 +642,14 @@ function healthBar(Total, inP){
     else{
         $(".HealthCyan").animate({"width": Total-inP + "%"}, 150);
         $(".HealthBrightCyan").animate({"width": Total-inP + "%"}, 1000);
+        $(".HealthCyan2").animate({"width": player - X + "%"}, 150);
+        $(".HealthBrightCyan2").animate({"width": player - X + "%"}, 1000);
         
 
     }
-    totalLeft = Total-inP;
+    let totalLeft = Total-inP;
     
-    
+    player = player - X;
     
     return totalLeft;
 }
@@ -569,7 +673,9 @@ function resetAll(){
     counter = 0;
     
     $(".HealthCyan").animate({"width": "100%"}, 150);
-    $(".HealthBrightCyan").animate({"width": "100%"}, 1000);
+    $(".HealthBrightCyan").animate({"width": "100%"}, 150);
+    $(".HealthCyan2").animate({"width": "100%"}, 150);
+    $(".HealthBrightCyan2").animate({"width": "100%"}, 1000)
     $(".buton").remove();
 
 
