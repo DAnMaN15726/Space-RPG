@@ -1,24 +1,112 @@
 let counter = 0;
 let array = [];
-var toggleChoice1 = false;
-var toggleChoice2 = false;
-var toggleChoice3 = false;
-var toggleChoice4 = false;
+let toggleChoice1 = false;
+let toggleChoice2 = false;
+let toggleChoice3 = false;
+let toggleChoice4 = false;
 
-let player = 0;
-let enemy = 0;
+let player = 100;
+
 
 
 let isaacC = 100;
-let Shodan = 200;
-let hellKnight = 150;
-let dooM = 175;
-const damageO = {Stomp: 15, Shoot: 20, Impale: 15, ContactBeam: 45};
+let Shodan = 100;
+let hellKnight = 100;
+let dooM = 100;
+const damageO = {Stomp: 10, Shoot: 20, Impale: 25, ContactBeam: 45};
 const damage1 = {ShockToTheSystem: 15, Holograph: 20, IonOrb: 15};
 const damage2 = {Earthquake: 15, RipTear: 20, Growl: 15, Bite: 45};
 const damage3 = {Punch: 10, DoubleBarrel: 20, RipandTear: 30, BFG9000: 70};
 
+const moveSet = [
+    {
+        name: "List1",
+        moves: [
+            {
+                name : 'Stomp',
+                power : 15
+            },
+            {
+                name: 'Shoot',
+                power: 20
+            },
+            {
+                name: 'Impale',
+                power: 25
+            },
+            {
+                name: 'ContactBeam',
+                power: 40
+            }
+        ]
 
+    },
+
+    {
+        name: "List2",
+        moves: [
+            {
+                name : 'ShockToTheSystem',
+                power : 15
+            },
+            {
+                name: 'Holograph',
+                power: 10
+            },
+            {
+                name: 'IonOrb',
+                power: 20
+            }
+            
+        ]
+
+    }, 
+    {
+    name: "List3",
+    moves: [
+            {
+                name: 'Earthquake',
+                power: 15
+            },
+            {
+                name: 'RipTear',
+                power: 25
+            },
+            {
+                name: 'Growl',
+                power: 15
+            },
+            {
+                name: 'Bite',
+                power: 45
+            }
+        ]
+
+    },
+    {
+    name: "List4",
+    moves: [
+            {
+                name: 'Punch',
+                power: 10
+            },
+            {
+                name: 'DoubleBarrel',
+                power: 20
+            },
+            {
+                name: 'RipandTear',
+                power: 30
+            },
+            {
+                name: 'BFG900',
+                power: 70
+            }
+        ]
+
+    }
+    
+]
 
 
 
@@ -246,60 +334,62 @@ function reset(){
 
 function continueB(){
     if( toggleChoice1 === false){
-        $("#Card1").remove();
+        $("#Card1").hide();
         
 
     }
     if(toggleChoice2 === false){
-        $("#Card2").remove();
+        $("#Card2").hide();
         
         
     }
     if( toggleChoice3 === false){
-        $("#Card3").remove();
+        $("#Card3").hide();
         
 
     }
     if(toggleChoice4 === false){
-        $("#Card4").remove();
+        $("#Card4").hide();
         
         
     }
 
         
     $("#continue").toggleClass("active");
-    $("#continue").empty();
+    $("#continue").hide();
     reset();
 
 }
 
 
 function continueC(){
-    // damage();
+    
         $(array[0]).remove();
-        let x = 0
+        let x = number(array[0]);
+        console.log(x);
+        let y = 0;
         
-        // $(".container").append(buton);
-        //$("#buton").prop('value', array[1]);
-        
-        $.each(damageO, function(key,valueObj){
-            x++;
-            var buton = $("<button>"+ key + "</button>") 
-            
-            buton.attr("id", x);
+        let i = 0;
+        for(let i = 0; i < moveSet[x].moves.length; i++ ){
+            // x++;
+            y++;
+            var buton = $("<button>"+ moveSet[x].moves[i].name + "</button>") 
+            console.log(moveSet[x].moves[i].name);
+            buton.attr("id", y);
             buton.attr("class", "buton");
-            // $(".container").append(buton);
+            
             buton.appendTo(".container");
+        }    
             
             
-            console.log(key);
-        });
 
 
         $("#1").click(function(){
-            console.log(this);
+        
+            let V = moveSet[x].moves[0].power;
             
-            sound( 1, array[0]);
+
+            damage(V, array[1]);
 
 
 
@@ -307,9 +397,10 @@ function continueC(){
         
         $("#2").click(function(){
             console.log(this);
-            sound(this);
+            let V = moveSet[x].moves[1].power;
 
 
+            damage(V, array[1]);
 
 
 
@@ -317,9 +408,10 @@ function continueC(){
 
         $("#3").click(function(){
             console.log(this);
-            sound(this);
+            let V = moveSet[x].moves[2].power;
 
 
+            damage(V, array[1]);
 
 
 
@@ -327,9 +419,10 @@ function continueC(){
 
         $("#4").click(function(){
             console.log(this);
-            sound(this);
+            let V = moveSet[x].moves[3].power;
 
 
+            damage(V, array[1]);
 
 
 
@@ -374,12 +467,110 @@ function removeElement(div){
 
 function sound(x, arr){
 
+
+}
+
+
+
+
+function number(arr){
+    if (arr === "#Card1"){
+        const num = 0
+        return num;
+    }
+    if (arr === "#Card2"){
+        const num = 1
+        return num;
+    }
+    if (arr === "#Card3"){
+        const num = 2
+        return num;
+    }
+    if (arr === "#Card4"){
+        const num = 3
+        return num;
+    }
+}
+
+
+
+function damage(input, arr){
+    if (arr === "#Card1"){
+        
+        isaacC = healthBar(isaacC, input);
+        
+
+    }
+    if (arr === "#Card2"){
+        
+        Shodan = healthBar(Shodan, input);
+        
+
+    }
+    if (arr === "#Card3"){
+        
+        hellKnight = healthBar(hellKnight, input);
+
+    }
+    if (arr === "#Card4"){
+        
+        dooM = healthBar(dooM, input);
+    }
+
+}
+
+
+
+
+function healthBar(Total, inP){
+    
+    
     
 
+    
+
+    if (Total < inP){
+        $(".HealthCyan").animate({"width": "0%"}, 150);
+        $(".HealthBrightCyan").animate({"width": "0%"}, 1000);
+        
+        resetAll();
+
+
+    }
+    else{
+        $(".HealthCyan").animate({"width": Total-inP + "%"}, 150);
+        $(".HealthBrightCyan").animate({"width": Total-inP + "%"}, 1000);
+        
+
+    }
+    totalLeft = Total-inP;
+    
+    
+    
+    return totalLeft;
+}
 
 
 
 
+function resetAll(){
+    $("#Card1").show();
+    $("#Card2").show();
+    $("#Card3").show();
+    $("#Card4").show();
+
+    toggleChoice1 = false;
+    toggleChoice2 = false;
+    toggleChoice3 = false;
+    toggleChoice4 = false;
+
+    array = [];
+    input = 0;
+    counter = 0;
+    
+    $(".HealthCyan").animate({"width": "100%"}, 150);
+    $(".HealthBrightCyan").animate({"width": "100%"}, 1000);
+    $(".buton").remove();
 
 
 
