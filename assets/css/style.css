@@ -146,6 +146,8 @@ width: inherit;
 height: 22px;
 position: relative;
 z-index: 2;
+color: black;
+font-family: 'Orbitron', sans-serif;
 }
 
 .HealthBrightCyan {
@@ -210,6 +212,8 @@ body{
     height: 22px;
     position: relative;
     z-index: 2;
+    color: black;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .HealthBrightCyan2 {
@@ -219,4 +223,38 @@ body{
     position:relative;
     bottom: 22px;
     z-index: 1;
+    
+}
+
+
+
+.buton{
+    font-size: 2em;
+    margin: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'Orbitron', sans-serif;
+
+
+}
+
+.buton:hover{
+    transition-duration: .1s;
+    box-shadow: 0 0 6px white, 0 0 6px cyan, 0 0 6px red; 
+    
+    
+}
+
+.card-text{
+    font-size: 1.5em;
+    margin: 10px;
+    color: black;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'Orbitron', sans-serif;
+}
+.card-text:hover{
+    font-size: 1.5em;
+    margin: 10px;
+    color: white;
+    
 }

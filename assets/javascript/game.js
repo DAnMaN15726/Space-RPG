@@ -87,6 +87,12 @@ hologram.setAttribute("src", "./assets/audio/hologram.mp3")
 const riptear = document.createElement("audio");
 riptear.setAttribute("src", "./assets/audio/RipTear.wav")
 
+const isaac = document.createElement("audio");
+isaac.setAttribute("src", "./assets/audio/isaac.mp3")
+
+const doom = document.createElement("audio");
+doom.setAttribute("src", "./assets/audio/doom.mp3")
+
 
 
 
@@ -210,13 +216,12 @@ const moveSet = [
 $("#Card1").click(function(){
     
     
-    audioElement.play();
-    audioElement.currentTime=0
+    
     $(this).toggleClass("active", toggleChoice1 =! toggleChoice1); 
     
     if( toggleChoice1 === true){
-        audioElement.play();
-        audioElement.currentTime=0
+        isaac.play();
+        isaac.currentTime=0
         counter = counter + 1;
         console.log(counter);
         array.push("#Card1");
@@ -316,11 +321,12 @@ $("#Card3").click(function(){
 
 $("#Card4").click(function(){
     
-    audioElement.play();
-    audioElement.currentTime=0
+    
     $(this).toggleClass("active", toggleChoice4 =! toggleChoice4); 
     
     if( toggleChoice4 === true){
+        doom.play();
+        doom.currentTime=0
         counter = counter + 1;
         console.log(counter);
         array.push("#Card4");
