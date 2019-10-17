@@ -1,3 +1,5 @@
+let Win1 = 0;
+let Win2 = 0;
 let counter = 0;
 let array = [];
 let toggleChoice1 = false;
@@ -13,10 +15,9 @@ let isaacC = 100;
 let Shodan = 100;
 let hellKnight = 100;
 let dooM = 100;
-const damageO = {Stomp: 10, Shoot: 20, Impale: 25, ContactBeam: 45};
-const damage1 = {ShockToTheSystem: 15, Holograph: 20, IonOrb: 15};
-const damage2 = {Earthquake: 15, RipTear: 20, Growl: 15, Bite: 45};
-const damage3 = {Punch: 10, DoubleBarrel: 20, RipandTear: 30, BFG9000: 70};
+
+let Z = 0;
+
 
 
 
@@ -192,7 +193,7 @@ const moveSet = [
                 sound: riptear
             },
             {
-                name: 'BFG900',
+                name: 'BFG9000',
                 power: 70,
                 sound: bfg9000
             }
@@ -358,9 +359,15 @@ $("#Card4").click(function(){
 
 
 function continueA(){
+    $(".HealthCyan").animate({"width": "100%"}, 150);
+    $(".HealthBrightCyan").animate({"width": "100%"}, 150);
+    $(".HealthCyan2").animate({"width": "100%"}, 150);
+    $(".HealthBrightCyan2").animate({"width": "100%"}, 1000);
+    
     $("#continue").toggleClass("active");
     $("#continue").append("<h1>Continue?</h1>");
-
+    $(".HealthCyan").empty();
+    $(".HealthCyan2").empty();
 
     $("#continue").append("<input type = 'button' value = 'Yes' id = 'Yes' />");
     $("#continue").append("<input type = 'button' value = 'No' id = 'No' />");
@@ -462,17 +469,24 @@ function continueB(){
 
 
 function continueC(){
-        
+    
+
+        $(".HealthCyan2").empty();
+        $(".HealthCyan").empty();
         $(array[0]).hide();
         let x = number(array[0]);
+        $(".HealthCyan2").append(`You: Level ${Z} | Wins: ${Win2}`);
+        $(".HealthCyan").append(`Enemy: Wins ${Win1}`);
+        Z++; 
         console.log(x);
         let y = 0;
         
         let i = 0;
         for(let i = 0; i < moveSet[x].moves.length; i++ ){
-            // x++;
+            
+            
             y++;
-            var buton = $("<button>"+ moveSet[x].moves[i].name + "</button>") 
+            let buton = $("<button>"+ moveSet[x].moves[i].name + "</button>") 
             console.log(moveSet[x].moves[i].name);
             buton.attr("id", y);
             buton.attr("class", "buton");
@@ -567,18 +581,6 @@ function removeElement(div){
 
 
 
-
-
-
-
-function sound(x, arr){
-
-
-}
-
-
-
-
 function number(arr){
     if (arr === "#Card1"){
         const num = 0
@@ -630,17 +632,39 @@ function damage(input, arr){
 
 
 function healthBar(Total, inP){
+    inP = inP + Z;
+    let X = (Math.floor((Math.random() * 40) + 5)) - Z;
     
-    let X = Math.floor((Math.random() * 20) + 1);
+    let totalLeft = Total-inP;
     
 
-    
-
-    if (Total <= inP || player <= X){
+    if (Total <= inP){
         $(".HealthCyan").animate({"width": "0%"}, 150);
         $(".HealthBrightCyan").animate({"width": "0%"}, 1000);
         $(".HealthCyan2").animate({"width": "0%"}, 150);
         $(".HealthBrightCyan2").animate({"width": "0%"}, 1000);
+
+        $(".HealthCyan").empty();
+        $(".HealthCyan2").empty();
+        
+        Win2 = Win2 + 1;
+        $(".HealthCyan2").append(`You: Level ${Z} | Wins: ${Win2}`);
+        $(".HealthCyan").append(`Enemy: Wins ${Win1}`);
+        resetAll();
+
+    }
+    if (player <= X){
+        $(".HealthCyan").animate({"width": "0%"}, 150);
+        $(".HealthBrightCyan").animate({"width": "0%"}, 1000);
+        $(".HealthCyan2").animate({"width": "0%"}, 150);
+        $(".HealthBrightCyan2").animate({"width": "0%"}, 1000);
+
+        $(".HealthCyan").empty();
+        $(".HealthCyan2").empty();
+        
+        Win1 = Win1 + 1;
+        $(".HealthCyan2").append(`You: Level ${Z} | Wins: ${Win2}`);
+        $(".HealthCyan").append(`Enemy: Wins ${Win1}`);
         resetAll();
 
 
@@ -653,7 +677,7 @@ function healthBar(Total, inP){
         
 
     }
-    let totalLeft = Total-inP;
+    // let totalLeft = Total-inP;
     
     player = player - X;
     
@@ -681,7 +705,7 @@ function resetAll(){
     $(".HealthCyan").animate({"width": "100%"}, 150);
     $(".HealthBrightCyan").animate({"width": "100%"}, 150);
     $(".HealthCyan2").animate({"width": "100%"}, 150);
-    $(".HealthBrightCyan2").animate({"width": "100%"}, 1000)
+    $(".HealthBrightCyan2").animate({"width": "100%"}, 1000);
     $(".buton").remove();
 
 
